@@ -1,7 +1,10 @@
 export default {
+  publicRuntimeConfig: {
+    baseUrl: process.env.BASE_URL,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'fakestore',
+    title: 'Fakestore | A fake store made with Nuxt',
     htmlAttrs: {
       lang: 'en',
     },
@@ -10,11 +13,26 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap',
+      },
+    ],
+  },
+
+  pageTransition: {
+    name: 'page-transition',
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['./assets/scss/main.scss'],
+
+  styleResources: {
+    scss: [],
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -28,6 +46,17 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          cache: true,
+        },
+        brotli: {
+          threshold: 10240,
+        },
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -40,5 +69,9 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    babel: {
+      plugins: ['@babel/plugin-proposal-optional-chaining'],
+    },
+  },
 }
