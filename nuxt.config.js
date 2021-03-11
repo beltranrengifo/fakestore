@@ -31,7 +31,13 @@ export default {
   css: ['./assets/scss/main.scss'],
 
   styleResources: {
-    scss: [],
+    scss: [
+      '@/assets/scss/_config.helpers.scss',
+      '@/assets/scss/_config.colors.scss',
+      '@/assets/scss/_config.fonts.scss',
+      '@/assets/scss/_config.responsive.scss',
+      '@/assets/scss/_utils.animations-transitions.scss',
+    ],
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

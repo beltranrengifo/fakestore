@@ -1,0 +1,65 @@
+@import '_global';
+
+/**
+ * Use this mixin to declare a set of CSS Custom Properties.
+ * The variables in $css_variables will be properly prefixed.
+ * The use of this mixin is encouraged to keep a good scalability.
+ *
+ * Usage:
+ *
+ * @include cssvars((
+ *  base-font-size: 65.5%,
+ *  font-family: #{"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif},
+ *
+ *  primary-color: #33b5e5,
+ *  secondary-color: #ff500a,
+ * ));
+ *
+ * Will result in
+ *
+ * root {
+ *    --prefix-var-name: value;
+ *    --prefix-var-name: value;
+ *    --prefix-var-name: value;
+ * }
+ *
+ */
+@mixin css-vars($css_variables, $prefix: $--docline-prefix) {
+  :root {
+    @each $name, $value in $css_variables {
+      --#{$prefix}-#{$name}: #{$value};
+    }
+  }
+}
+
+/**
+ * Retrieve a css variable value with prefix
+ *
+ * Usage
+ *
+ * .selector {
+ *   color: cssva(primary-color);
+ * }
+ *
+ * Will result in
+ *
+ * .selector {
+ *    color: var(--prefix-primary-color);
+ * }
+ */
+@function get-var($name, $prefix: $--docline-prefix) {
+  @return var(--#{$prefix}-#{$name});
+}
+
+/**
+  * Sass function to use rem units.
+  *
+  * Usage
+  *
+  .demo {
+    font-size: rem(24);
+  }
+*/
+@function rem($pixels, $context: 16) {
+  @return #{$pixels/$context}rem;
+}

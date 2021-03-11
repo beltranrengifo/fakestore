@@ -1,0 +1,12 @@
+body {
+  font-family: get-var(font-sans);
+  font-size: get-var(font-base);
+  color: get-var(color-base);
+  line-height: get-var(font-leading);
+  font-weight: get-var(font-weight-base);
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-kerning: none;
+  font-kerning: none;
+}

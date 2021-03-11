@@ -1,0 +1,27 @@
+@include css-vars(
+  (
+    color-base: #272727,
+    color-primary: #0c0745,
+    color-secondary: #ea413e,
+    color-tertiary: #50a3bd,
+    color-blue-500: #0d4599,
+    color-medium-grey: #979593,
+    color-lighter-grey: #f1f3f5,
+    color-white: #ffffff,
+  )
+);
+
+/**
+* Use only sass vars for functions, etc
+*
+* ex: background-color: background-opacity($--color-primary, 0.5);
+*/
+
+$--color-base: #272727;
+$--color-primary: #0c0745;
+$--color-secondary: #ea413e;
+$--color-tertiary: #50a3bd;
+$--color-blue-500: #0d4599;
+$--color-medium-grey: #979593;
+$--color-lighter-grey: #f1f3f5;
+$--color-white: #fff;
