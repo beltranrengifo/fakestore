@@ -1,4 +1,4 @@
-@import '_global';
+@import '_config.global';
 
 /**
  * Use this mixin to declare a set of CSS Custom Properties.
@@ -24,7 +24,7 @@
  * }
  *
  */
-@mixin css-vars($css_variables, $prefix: $--docline-prefix) {
+@mixin css-vars($css_variables, $prefix: $--fakestore-prefix) {
   :root {
     @each $name, $value in $css_variables {
       --#{$prefix}-#{$name}: #{$value};
@@ -47,7 +47,7 @@
  *    color: var(--prefix-primary-color);
  * }
  */
-@function get-var($name, $prefix: $--docline-prefix) {
+@function get-var($name, $prefix: $--fakestore-prefix) {
   @return var(--#{$prefix}-#{$name});
 }
 

@@ -4,6 +4,10 @@ body {
   color: get-var(color-base);
   line-height: get-var(font-leading);
   font-weight: get-var(font-weight-base);
+  width: get-var(boxed-width);
+  margin: get-var(boxed-margin);
+  background-color: get-var(color-white);
+  max-width: 100%;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
