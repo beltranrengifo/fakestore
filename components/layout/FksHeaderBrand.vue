@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { LOGO_IMAGE_ALT } from '@/constants'
+import { LOGO_IMAGE_ALT } from '~/config/constants'
 
 export default Vue.extend({
   name: 'FksHeaderBrand',

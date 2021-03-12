@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { DEFAULT_IMAGE_ALT } from '@/constants'
+import { DEFAULT_IMAGE_ALT } from '@/config/constants'
 import { Nullable } from '@/types/types'
 
 export default Vue.extend({
