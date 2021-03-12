@@ -1,18 +1,19 @@
 <template>
-  <component
-    :is="tag"
-    v-bind="buttonProps"
-    class="brand-button"
-    @click="handleClick"
-  >
+  <component :is="tag" class="brand-button" @click="handleClick">
     <span class="brand-button__inner">
-      <slot />
+      <span v-if="icon && getIcon" class="brand-button__icon">
+        <img :src="getIcon" alt="cart" width="16" height="16" />
+      </span>
+      <span v-if="hasDefaultSlot" class="brand-button__text">
+        <slot />
+      </span>
     </span>
   </component>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { Nullable } from '@/types/types'
 
 export default Vue.extend({
   name: 'FksButton',
@@ -26,9 +27,23 @@ export default Vue.extend({
       type: String,
       default: '',
     },
-    buttonProps: {
-      type: Object,
-      default: () => null,
+    icon: {
+      type: String,
+      default: '',
+    },
+  },
+
+  computed: {
+    getIcon(): Nullable<object> {
+      try {
+        return require(`@/assets/images/${this.icon}.svg`)
+      } catch (e) {
+        return null
+      }
+    },
+
+    hasDefaultSlot(): boolean {
+      return !!this.$slots.default
     },
   },
 
@@ -62,6 +77,21 @@ export default Vue.extend({
 
   &:focus {
     outline-color: get-var(color-tertiary);
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    width: rem(16);
+    height: rem(16);
+    margin-right: rem(8);
   }
 }
 </style>

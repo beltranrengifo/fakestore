@@ -30,6 +30,7 @@
 
         <fks-button
           class="product-grid-item__button"
+          icon="cart-add"
           @click="handleProductToCart"
         >
           {{ $t('shop.add') }}
@@ -88,6 +89,12 @@ export default Vue.extend({
     padding: rem(48);
     border: 1px solid get-var(color-lighter-grey);
     border-radius: rem(4);
+    transition: box-shadow 200ms ease-out;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+
+    &:hover {
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+    }
   }
 
   &__image {
