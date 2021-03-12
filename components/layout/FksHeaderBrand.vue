@@ -39,6 +39,7 @@ export default Vue.extend({
     font-weight: get-var(font-weight-bold);
     font-size: rem(16);
     letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
 }
 </style>

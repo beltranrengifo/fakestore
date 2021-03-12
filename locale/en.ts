@@ -1,5 +1,9 @@
 export default {
   header: {
-    brand: 'FAKESTORE',
+    brand: 'Fakestore',
+  },
+
+  shop: {
+    myCart: 'My cart',
   },
 }

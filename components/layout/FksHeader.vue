@@ -21,7 +21,10 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .header {
-  margin-top: rem(40);
+  @include breakpoint(sm) {
+    margin-top: rem(40);
+  }
+
   &__inner {
     display: flex;
     align-items: center;
@@ -29,7 +32,9 @@ export default Vue.extend({
     height: get-var(header-height);
     padding: 0 rem(24);
     background-color: get-var(color-primary);
-    border-radius: rem(10);
+    @include breakpoint(sm) {
+      border-radius: rem(10);
+    }
   }
 }
 </style>
