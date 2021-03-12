@@ -1,3 +1,5 @@
+import en from './locale/en'
+
 export default {
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL,
@@ -39,7 +41,11 @@ export default {
     ],
   },
 
-  components: true,
+  components: [
+    { path: '@/components/' },
+    { path: '@/components/layout' },
+    { path: '@/components/common' },
+  ],
 
   buildModules: [
     '@nuxt/typescript-build',
@@ -58,9 +64,20 @@ export default {
     ],
   ],
 
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', 'nuxt-i18n'],
 
   axios: {},
+
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en,
+      },
+    },
+  },
 
   build: {
     babel: {
