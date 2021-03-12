@@ -45,6 +45,7 @@ export default {
     { path: '@/components/' },
     { path: '@/components/layout' },
     { path: '@/components/common' },
+    { path: '@/components/shop' },
   ],
 
   buildModules: [
