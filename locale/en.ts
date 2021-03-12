@@ -5,5 +5,6 @@ export default {
 
   shop: {
     myCart: 'My cart',
+    add: 'Add to cart',
   },
 }
