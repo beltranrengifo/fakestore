@@ -1,6 +1,13 @@
 <template>
   <header class="header">
-    <div class="header__inner"></div>
+    <div class="header__inner">
+      <div class="header__left">
+        <FksHeaderBrand />
+      </div>
+      <div class="header__right">
+        <FksHeaderCart />
+      </div>
+    </div>
   </header>
 </template>
 
@@ -14,9 +21,15 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .header {
+  margin-top: rem(40);
   &__inner {
-    background-color: get-var(color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: get-var(header-height);
+    padding: 0 rem(24);
+    background-color: get-var(color-primary);
+    border-radius: rem(10);
   }
 }
 </style>
