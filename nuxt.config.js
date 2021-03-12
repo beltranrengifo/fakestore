@@ -67,7 +67,9 @@ export default {
 
   modules: ['@nuxtjs/axios', 'nuxt-i18n'],
 
-  axios: {},
+  axios: {
+    baseURL: process.env.API_URL,
+  },
 
   i18n: {
     locales: ['en'],
