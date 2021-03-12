@@ -43,6 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Product } from '@/types/types'
+import { mapActions, mapState } from 'vuex'
 import { CURRENCY_SYMBOL } from '@/config/constants'
 
 export default Vue.extend({
@@ -62,6 +63,10 @@ export default Vue.extend({
   },
 
   computed: {
+    ...mapState({
+      cart: (state: any) => state.shop.cart,
+    }),
+
     validProduct(): boolean {
       return !!Object.keys(this.product).length
     },
@@ -72,8 +77,22 @@ export default Vue.extend({
   },
 
   methods: {
-    handleProductToCart(): void {
-      console.log('btn')
+    ...mapActions({
+      addToCart: 'shop/addToCart',
+    }),
+
+    async handleProductToCart(): Promise<void> {
+      const itemIsInCart: boolean = this.cart.find(
+        (product: Product) => product.id === this.product.id
+      )
+
+      if (itemIsInCart) {
+        this.$toast.error(this.$t('shop.productAlreadyInCart') as string)
+        return
+      }
+
+      await this.addToCart(this.product)
+      this.$toast.success(this.$t('shop.productAddedToCart') as string)
     },
   },
 })
