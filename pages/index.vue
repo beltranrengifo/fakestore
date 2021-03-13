@@ -1,7 +1,8 @@
 <template>
   <section class="home">
     <fks-product-search />
-    <fks-product-grid :products="products" />
+    <fks-product-grid v-if="getProductsCount" :products="products" />
+    <fks-empty-search v-else class="home__no-search-results" />
   </section>
 </template>
 
@@ -30,6 +31,7 @@ export default Vue.extend({
     ...mapGetters({
       query: 'shop/getQuery',
       filteredProducts: 'shop/getProducts',
+      getProductsCount: 'shop/getProductsCount',
     }),
   },
 

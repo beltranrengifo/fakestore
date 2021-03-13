@@ -37,6 +37,6 @@ export default Vue.extend({
 .product-search {
   margin-top: rem(8);
   position: sticky;
-  top: 80;
+  top: 80px;
 }
 </style>

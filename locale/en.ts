@@ -13,5 +13,7 @@ export default {
     emptyCartTitle: 'Your cart is empty',
     emptyCartContent: 'Go back to our shop to start adding products!',
     searchProducts: 'Search product',
+    emptySearchTitle: 'No results :(',
+    emptySearchContent: 'Try again with another query',
   },
 }

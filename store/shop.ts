@@ -16,6 +16,10 @@ export const getters: GetterTree<RootState, RootState> = {
     })
   },
 
+  getProductsCount(_, getters): number {
+    return getters.getProducts.length
+  },
+
   getCartCount({ cart }): number {
     return cart.length
   },
