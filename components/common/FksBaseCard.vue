@@ -22,10 +22,6 @@ export default Vue.extend({
       type: String,
       default: '',
     },
-    width: {
-      type: String,
-      default: '',
-    },
   },
 })
 </script>

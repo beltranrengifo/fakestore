@@ -1,6 +1,7 @@
 <template>
   <section>
-    <FksHeader />
+    <fks-header />
+    <fks-breadcrumbs />
     <main role="main">
       <Nuxt />
     </main>
