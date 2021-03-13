@@ -30,10 +30,11 @@
 
         <fks-button
           class="product-grid-item__button"
-          icon="cart-add"
-          @click="handleProductToCart"
+          :icon="getButtonIcon"
+          :type="getButtonType"
+          @click="handleProductInCart"
         >
-          {{ $t('shop.add') }}
+          {{ getButtonText }}
         </fks-button>
       </div>
     </div>
@@ -59,6 +60,7 @@ export default Vue.extend({
   data() {
     return {
       currency: CURRENCY_SYMBOL as String,
+      inCart: false as Boolean,
     }
   },
 
@@ -74,25 +76,41 @@ export default Vue.extend({
     price(): string {
       return `${this.product.price.toFixed(2)} ${this.currency}`
     },
+
+    getButtonText(): string {
+      return this.inCart
+        ? (this.$t('shop.remove') as string)
+        : (this.$t('shop.add') as string)
+    },
+
+    getButtonType(): string {
+      return this.inCart ? 'danger' : 'info'
+    },
+
+    getButtonIcon(): string {
+      return this.inCart ? 'cart-remove' : 'cart-add'
+    },
   },
 
   methods: {
     ...mapActions({
       addToCart: 'shop/addToCart',
+      removeFromCart: 'shop/removeFromCart',
     }),
 
-    async handleProductToCart(): Promise<void> {
-      const itemIsInCart: boolean = this.cart.find(
-        (product: Product) => product.id === this.product.id
-      )
+    async handleProductInCart(): Promise<void> {
+      if (this.inCart) {
+        await this.removeFromCart(this.product)
+        this.$toast.info(this.$t('shop.productRemovedFromCart') as string)
 
-      if (itemIsInCart) {
-        this.$toast.error(this.$t('shop.productAlreadyInCart') as string)
+        this.inCart = false
         return
       }
 
       await this.addToCart(this.product)
       this.$toast.success(this.$t('shop.productAddedToCart') as string)
+
+      this.inCart = true
     },
   },
 })
