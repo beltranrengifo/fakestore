@@ -4,11 +4,22 @@ import { Product } from '@/types/types'
 export const state = () => ({
   products: [] as Product[],
   cart: [] as Product[],
+  query: '' as string,
 })
 
 export type RootState = ReturnType<typeof state>
 
 export const getters: GetterTree<RootState, RootState> = {
+  getProducts({ products, query }): Product[] {
+    return products.filter((product: Product) => {
+      return product.title.toLowerCase().includes(query.toLowerCase())
+    })
+  },
+
+  getProductsCount(_, getters): number {
+    return getters.getProducts.length
+  },
+
   getCartCount({ cart }): number {
     return cart.length
   },
@@ -16,14 +27,23 @@ export const getters: GetterTree<RootState, RootState> = {
   getCart({ cart }): Product[] {
     return cart
   },
+
+  getQuery({ query }): string {
+    return query
+  },
 }
 
 export const actions: ActionTree<RootState, RootState> = {
-  async getAllProducts({ commit }): Promise<Product[]> {
-    const products = await this.$axios.$get('/products')
+  async fetchProducts({ commit }): Promise<void> {
+    let products = []
 
-    commit('SET_PRODUCTS', products)
-    return products
+    try {
+      products = await this.$axios.$get('/products')
+      commit('SET_PRODUCTS', products)
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.info(`Error fetching products: ${e}`)
+    }
   },
 
   addToCart({ commit }, payload: Product): void {
@@ -36,11 +56,15 @@ export const actions: ActionTree<RootState, RootState> = {
     cart.splice(index, 1)
     commit('UNSET_CART', cart)
   },
+
+  setQuery({ commit }, payload) {
+    commit('SET_QUERY', payload)
+  },
 }
 
 export const mutations: MutationTree<RootState> = {
   SET_PRODUCTS(state, payload) {
-    state.products = payload
+    state.products = [...payload]
   },
 
   SET_CART(state, payload) {
@@ -49,5 +73,9 @@ export const mutations: MutationTree<RootState> = {
 
   UNSET_CART(state, payload) {
     state.cart = [...payload]
+  },
+
+  SET_QUERY(state, payload) {
+    state.query = payload
   },
 }

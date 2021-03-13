@@ -23,6 +23,7 @@ export default Vue.extend({
 .header {
   position: sticky;
   top: 0;
+  z-index: 9;
 
   @include breakpoint(sm) {
     margin-top: rem(40);
