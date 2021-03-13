@@ -1,0 +1,48 @@
+body {
+  font-family: get-var(font-sans);
+  font-size: get-var(font-base);
+  color: get-var(color-base);
+  line-height: get-var(font-leading);
+  font-weight: get-var(font-weight-base);
+  width: get-var(boxed-width);
+  margin: get-var(boxed-margin);
+  background-color: get-var(color-white);
+  max-width: 100%;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-kerning: none;
+  font-kerning: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+  font: get-var(font-sans);
+  font-family: get-var(font-sans);
+  background: none;
+  min-height: rem(32);
+  outline-color: get-var(color-tertiary);
+}
+
+input {
+  border: none;
+  min-height: rem(40);
+  font: get-var(font-sans);
+  font-family: get-var(font-sans);
+  color: get-var(color-base);
+  line-height: get-var(font-leading);
+  font-weight: get-var(font-weight-base);
+
+  &:focus {
+    outline-color: get-var(color-tertiary);
+    border-radius: rem(10);
+  }
+}

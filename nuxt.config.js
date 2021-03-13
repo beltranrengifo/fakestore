@@ -1,7 +1,12 @@
+import en from './locale/en'
+
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  publicRuntimeConfig: {
+    baseUrl: process.env.BASE_URL,
+  },
+
   head: {
-    title: 'fakestore',
+    title: 'Fakestore | A fake store made with Nuxt',
     htmlAttrs: {
       lang: 'en',
     },
@@ -10,35 +15,81 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap',
+      },
+    ],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  pageTransition: {
+    name: 'page-transition',
+  },
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  css: ['./assets/scss/main.scss'],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  styleResources: {
+    scss: [
+      '@/assets/scss/config/_config.helpers.scss',
+      '@/assets/scss/config/_config.colors.scss',
+      '@/assets/scss/config/_config.fonts.scss',
+      '@/assets/scss/config/_config.layout.scss',
+      '@/assets/scss/config/_config.responsive.scss',
+    ],
+  },
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  components: [
+    { path: '@/components/' },
+    { path: '@/components/layout' },
+    { path: '@/components/common' },
+    { path: '@/components/shop' },
+  ],
+
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/style-resources',
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          cache: true,
+        },
+        brotli: {
+          threshold: 10240,
+        },
+      },
+    ],
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-  ],
+  modules: ['@nuxtjs/axios', 'nuxt-i18n', '@nuxtjs/toast'],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  toast: {
+    position: 'top-center',
+    duration: 2000,
+  },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  axios: {
+    baseURL: process.env.API_URL,
+  },
+
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en,
+      },
+    },
+  },
+
+  build: {
+    babel: {
+      plugins: ['@babel/plugin-proposal-optional-chaining'],
+    },
+  },
 }
