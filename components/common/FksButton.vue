@@ -1,5 +1,10 @@
 <template>
-  <component :is="tag" class="brand-button" @click="handleClick">
+  <component
+    :is="tag"
+    class="brand-button"
+    :class="[`brand-button--${type}`]"
+    @click="handleClick"
+  >
     <span class="brand-button__inner">
       <span v-if="icon && getIcon" class="brand-button__icon">
         <img :src="getIcon" alt="cart" width="16" height="16" />
@@ -25,7 +30,7 @@ export default Vue.extend({
     },
     type: {
       type: String,
-      default: '',
+      default: 'info',
     },
     icon: {
       type: String,
@@ -65,7 +70,6 @@ export default Vue.extend({
   box-shadow: none;
   border: none;
   // styles
-  background-color: get-var(color-blue-500);
   height: rem(40);
   font-family: get-var(font-sans);
   font-size: rem(12);
@@ -92,6 +96,12 @@ export default Vue.extend({
     width: rem(16);
     height: rem(16);
     margin-right: rem(8);
+  }
+  &--info {
+    background-color: get-var(color-blue-500);
+  }
+  &--danger {
+    background-color: get-var(color-red-500);
   }
 }
 </style>

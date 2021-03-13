@@ -30,10 +30,11 @@
 
         <fks-button
           class="product-grid-item__button"
-          icon="cart-add"
-          @click="handleProductToCart"
+          :icon="getButtonIcon"
+          :type="getButtonType"
+          @click="handleProductInCart"
         >
-          {{ $t('shop.add') }}
+          {{ getButtonText }}
         </fks-button>
       </div>
     </div>
@@ -43,6 +44,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Product } from '@/types/types'
+import { mapActions, mapState } from 'vuex'
 import { CURRENCY_SYMBOL } from '@/config/constants'
 
 export default Vue.extend({
@@ -58,10 +60,15 @@ export default Vue.extend({
   data() {
     return {
       currency: CURRENCY_SYMBOL as String,
+      inCart: false as Boolean,
     }
   },
 
   computed: {
+    ...mapState({
+      cart: (state: any) => state.shop.cart,
+    }),
+
     validProduct(): boolean {
       return !!Object.keys(this.product).length
     },
@@ -69,11 +76,41 @@ export default Vue.extend({
     price(): string {
       return `${this.product.price.toFixed(2)} ${this.currency}`
     },
+
+    getButtonText(): string {
+      return this.inCart
+        ? (this.$t('shop.remove') as string)
+        : (this.$t('shop.add') as string)
+    },
+
+    getButtonType(): string {
+      return this.inCart ? 'danger' : 'info'
+    },
+
+    getButtonIcon(): string {
+      return this.inCart ? 'cart-remove' : 'cart-add'
+    },
   },
 
   methods: {
-    handleProductToCart(): void {
-      console.log('btn')
+    ...mapActions({
+      addToCart: 'shop/addToCart',
+      removeFromCart: 'shop/removeFromCart',
+    }),
+
+    async handleProductInCart(): Promise<void> {
+      if (this.inCart) {
+        await this.removeFromCart(this.product)
+        this.$toast.info(this.$t('shop.productRemovedFromCart') as string)
+
+        this.inCart = false
+        return
+      }
+
+      await this.addToCart(this.product)
+      this.$toast.success(this.$t('shop.productAddedToCart') as string)
+
+      this.inCart = true
     },
   },
 })

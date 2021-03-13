@@ -65,7 +65,12 @@ export default {
     ],
   ],
 
-  modules: ['@nuxtjs/axios', 'nuxt-i18n'],
+  modules: ['@nuxtjs/axios', 'nuxt-i18n', '@nuxtjs/toast'],
+
+  toast: {
+    position: 'top-center',
+    duration: 2000,
+  },
 
   axios: {
     baseURL: process.env.API_URL,

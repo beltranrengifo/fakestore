@@ -5,13 +5,14 @@
     </n-link>
     <p class="cart-status__text">
       {{ $t('shop.myCart') }}
-      <span class="cart-status__count"> (2) </span>
+      <span class="cart-status__count"> ({{ count }}) </span>
     </p>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   name: 'FksCartStatus',
@@ -24,6 +25,10 @@ export default Vue.extend({
   },
 
   computed: {
+    ...mapGetters({
+      count: 'shop/getCartCount',
+    }),
+
     cartIcon(): object {
       return require('@/assets/images/cart.svg')
     },
