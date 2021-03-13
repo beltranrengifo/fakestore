@@ -1,7 +1,8 @@
 <template>
   <section class="cart">
     <fks-navigate-button text="Continue shopping" path="/" />
-    <fks-product-grid :products="products" />
+    <fks-product-grid v-if="count" :products="products" />
+    <fks-empty-cart v-else />
   </section>
 </template>
 
@@ -15,6 +16,7 @@ export default Vue.extend({
   computed: {
     ...mapGetters({
       products: 'shop/getCart',
+      count: 'shop/getCartCount',
     }),
   },
 })
