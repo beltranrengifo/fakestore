@@ -12,6 +12,10 @@ export const getters: GetterTree<RootState, RootState> = {
   getCartCount({ cart }): number {
     return cart.length
   },
+
+  getCart({ cart }): Product[] {
+    return cart
+  },
 }
 
 export const actions: ActionTree<RootState, RootState> = {

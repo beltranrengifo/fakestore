@@ -1,18 +1,19 @@
 <template>
   <div class="cart-status">
-    <n-link class="cart-status__icon" tag="figure" :to="link">
+    <n-link v-if="cartIcon" class="cart-status__icon" tag="figure" :to="link">
       <img :src="cartIcon" alt="My cart icon" width="16" height="16" />
     </n-link>
-    <p class="cart-status__text">
+    <n-link tag="p" :to="link" class="cart-status__text">
       {{ $t('shop.myCart') }}
       <span class="cart-status__count"> ({{ count }}) </span>
-    </p>
+    </n-link>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
+import { Nullable } from '@/types/types'
 
 export default Vue.extend({
   name: 'FksCartStatus',
@@ -29,8 +30,12 @@ export default Vue.extend({
       count: 'shop/getCartCount',
     }),
 
-    cartIcon(): object {
-      return require('@/assets/images/cart.svg')
+    cartIcon(): Nullable<object> {
+      try {
+        return require('@/assets/images/cart.svg')
+      } catch (e) {
+        return null
+      }
     },
   },
 })
