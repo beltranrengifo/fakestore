@@ -1,6 +1,7 @@
 <template>
   <section class="home">
     <fks-product-search />
+    <!-- TODO print search results count -->
     <fks-product-grid v-if="getProductsCount" :products="products" />
     <fks-empty-search v-else class="home__no-search-results" />
   </section>
