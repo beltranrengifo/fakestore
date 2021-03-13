@@ -60,7 +60,7 @@ export default Vue.extend({
 
   &__home-path {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
 
     img {
       height: rem(16);
