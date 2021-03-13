@@ -92,6 +92,10 @@ export default Vue.extend({
     },
   },
 
+  created() {
+    this.checkProductInCart()
+  },
+
   methods: {
     ...mapActions({
       addToCart: 'shop/addToCart',
@@ -111,6 +115,14 @@ export default Vue.extend({
       this.$toast.success(this.$t('shop.productAddedToCart') as string)
 
       this.inCart = true
+    },
+
+    checkProductInCart(): boolean {
+      this.inCart = this.cart.find(
+        (product: Product) => product.id === this.product.id
+      )
+
+      return !!this.inCart
     },
   },
 })

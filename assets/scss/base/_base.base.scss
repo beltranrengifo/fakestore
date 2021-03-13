@@ -18,3 +18,16 @@ body {
 img {
   max-width: 100%;
 }
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+  font: get-var(font-sans);
+  font-family: get-var(font-sans);
+  background: none;
+  min-height: rem(32);
+  outline-color: get-var(color-tertiary);
+}
