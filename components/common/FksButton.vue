@@ -62,16 +62,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .brand-button {
-  /* reset */
-  -webkit-appearance: none;
-  -moz-appearance: none;
   transition: background 250ms ease-in-out, transform 150ms ease;
-  cursor: pointer;
-  box-shadow: none;
-  border: none;
-  // styles
   height: rem(40);
-  font-family: get-var(font-sans);
   font-size: rem(12);
   font-weight: get-var(font-weight-bold);
   text-transform: uppercase;
