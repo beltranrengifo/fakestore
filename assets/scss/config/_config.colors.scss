@@ -13,6 +13,24 @@
   )
 );
 
+.theme-dark {
+  @include update-var(
+    (
+      color-base: #dcdcdc,
+      color-primary: #eeecfd,
+      color-secondary: #ea413e,
+      color-tertiary: #50a3bd,
+      color-blue-500: #9cbae6,
+      color-red-500: #e82b27,
+      color-medium-grey: #5c5c5c,
+      color-light-grey: #333232,
+      color-lighter-grey: #3c3c3c,
+      color-white: #000000,
+    )
+  );
+}
+// @include update-var(button-height, 56px);
+
 /**
 * Use only sass vars for functions, mixins, etc
 *

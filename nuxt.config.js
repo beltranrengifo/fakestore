@@ -44,7 +44,7 @@ export default {
   components: [
     { path: '@/components/' },
     { path: '@/components/layout' },
-    { path: '@/components/common' },
+    { path: '@/components/base' },
     { path: '@/components/shop' },
   ],
 
