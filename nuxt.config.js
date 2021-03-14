@@ -38,6 +38,7 @@ export default {
       '@/assets/scss/config/_config.fonts.scss',
       '@/assets/scss/config/_config.layout.scss',
       '@/assets/scss/config/_config.responsive.scss',
+      '@/assets/scss/utils/_utils.animations-transitions.scss',
     ],
   },
 
@@ -92,4 +93,6 @@ export default {
       plugins: ['@babel/plugin-proposal-optional-chaining'],
     },
   },
+
+  buildDir: 'dist',
 }
