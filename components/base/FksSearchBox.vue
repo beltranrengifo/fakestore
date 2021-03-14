@@ -48,7 +48,7 @@ export default Vue.extend({
   },
 
   methods: {
-    handleChange() {
+    handleChange(): void {
       this.$emit('input', this.value)
     },
   },

@@ -11,14 +11,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Products } from '@/types/types'
+import { Product } from '@/types/types'
 
 export default Vue.extend({
   name: 'FksProductGrid',
 
   props: {
     products: {
-      type: (Array as unknown) as () => Products,
+      type: Array as () => Product[],
       required: true,
     },
   },

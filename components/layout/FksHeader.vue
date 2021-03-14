@@ -2,10 +2,10 @@
   <header class="header">
     <div class="header__inner">
       <div class="header__left">
-        <FksHeaderBrand />
+        <fks-header-brand />
       </div>
       <div class="header__right">
-        <FksHeaderCart />
+        <fks-header-cart />
       </div>
     </div>
   </header>

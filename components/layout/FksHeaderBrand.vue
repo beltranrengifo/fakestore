@@ -1,6 +1,6 @@
 <template>
   <n-link class="header-brand" :to="link">
-    <FksImage :src="logo" :alt="alt" />
+    <fks-image :src="logo" :alt="alt" />
     <h2 class="header-brand__title">{{ $t('header.brand') }}</h2>
   </n-link>
 </template>

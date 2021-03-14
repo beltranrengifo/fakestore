@@ -26,7 +26,7 @@ export default Vue.extend({
 
   data() {
     return {
-      separator: '/' as string,
+      separator: '/' as String,
     }
   },
 
