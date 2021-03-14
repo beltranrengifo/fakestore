@@ -12,8 +12,9 @@ export default {
     productRemovedFromCart: 'Product removed from your cart',
     emptyCartTitle: 'Your cart is empty',
     emptyCartContent: 'Go back to our shop to start adding products!',
-    searchProducts: 'Search product',
+    searchProducts: 'Search products',
     emptySearchTitle: 'No results :(',
     emptySearchContent: 'Try again with another query',
+    result: 'No results | {n} result | {n} results',
   },
 }
