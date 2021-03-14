@@ -117,12 +117,12 @@ export default Vue.extend({
       this.inCart = true
     },
 
-    checkProductInCart(): boolean {
-      this.inCart = this.cart.find(
+    checkProductInCart(): Boolean {
+      this.inCart = this.cart.some(
         (product: Product) => product.id === this.product.id
       )
 
-      return !!this.inCart
+      return this.inCart
     },
   },
 })
