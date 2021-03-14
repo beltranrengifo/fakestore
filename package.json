@@ -25,6 +25,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/toast": "^3.3.1",
+    "@nuxtjs/vercel-builder": "^0.21.2",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
     "nuxt-compress": "^4.1.0",
