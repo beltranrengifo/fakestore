@@ -1,7 +1,10 @@
 <template>
   <section class="home">
-    <fks-product-search />
-    <!-- TODO print search results count -->
+    <fks-product-search
+      :count="getProductsCount"
+      :total="getTotalProductsCount"
+      show-count
+    />
     <fks-product-grid v-if="getProductsCount" :products="products" />
     <fks-empty-search v-else class="home__no-search-results" />
   </section>
@@ -33,6 +36,7 @@ export default Vue.extend({
       query: 'shop/getQuery',
       filteredProducts: 'shop/getProducts',
       getProductsCount: 'shop/getProductsCount',
+      getTotalProductsCount: 'shop/getTotalProductsCount',
     }),
   },
 
