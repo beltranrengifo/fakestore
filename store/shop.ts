@@ -20,12 +20,16 @@ export const getters: GetterTree<RootState, RootState> = {
     return getters.getProducts.length
   },
 
-  getCartCount({ cart }): number {
-    return cart.length
+  getTotalProductsCount({ products }): number {
+    return products.length
   },
 
   getCart({ cart }): Product[] {
     return cart
+  },
+
+  getCartCount({ cart }): number {
+    return cart.length
   },
 
   getQuery({ query }): string {
