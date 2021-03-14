@@ -1,5 +1,6 @@
 <template>
   <section>
+    <fks-theme-selector />
     <fks-header />
     <fks-breadcrumbs />
     <main role="main">
