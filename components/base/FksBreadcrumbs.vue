@@ -45,7 +45,6 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .breadcrumbs {
   display: flex;
-  justify-content: center;
   align-items: center;
   margin: rem(16) rem(16) rem(16) 0;
 

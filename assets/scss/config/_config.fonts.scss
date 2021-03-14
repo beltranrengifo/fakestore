@@ -7,3 +7,11 @@
     font-weight-bold: 500,
   )
 );
+
+.theme-dark {
+  @include update-var(
+    (
+      font-weight-base: 400,
+    )
+  );
+}

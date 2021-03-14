@@ -52,6 +52,17 @@
 }
 
 /**
+ * Update a custom property
+ *
+ *
+ */
+@mixin update-var($css_variables, $prefix: $--fakestore-prefix) {
+  @each $name, $value in $css_variables {
+    --#{$prefix}-#{$name}: #{$value};
+  }
+}
+
+/**
   * Sass function to use rem units.
   *
   * Usage
