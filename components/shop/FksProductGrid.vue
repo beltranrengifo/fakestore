@@ -28,8 +28,15 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .product-grid {
   display: grid;
-  gap: rem(50) rem(50);
-  grid-template-columns: repeat(2, 1fr);
+  gap: rem(16) rem(16);
+  grid-template-columns: repeat(1, 1fr);
   margin: rem(24) 0;
+  padding: rem(16);
+
+  @include breakpoint(sm) {
+    gap: rem(50) rem(50);
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+  }
 }
 </style>
