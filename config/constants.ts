@@ -4,3 +4,5 @@ export const DEFAULT_IMAGE_ALT: string =
 export const LOGO_IMAGE_ALT: string = 'Fakestore brand logo'
 
 export const CURRENCY_SYMBOL: string = '€'
+
+export const API_URL: string = 'https://fakestoreapi.com'
