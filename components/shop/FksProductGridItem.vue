@@ -132,10 +132,10 @@ export default Vue.extend({
 .product-grid-item {
   &__inner {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: repeat(1, 1fr);
     align-items: center;
     height: 100%;
-    padding: rem(48);
+    padding: rem(16);
     border: 1px solid get-var(color-lighter-grey);
     border-radius: rem(4);
     transition: box-shadow 200ms ease-out;
@@ -143,6 +143,11 @@ export default Vue.extend({
 
     &:hover {
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    @include breakpoint(sm) {
+      grid-template-columns: 40% 60%;
+      padding: rem(48);
     }
   }
 
