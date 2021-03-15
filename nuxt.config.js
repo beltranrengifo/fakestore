@@ -1,4 +1,4 @@
-import { API_URL } from '@/config/constants'
+import { API_URL } from './config/constants'
 import en from './locale/en'
 
 export default {
