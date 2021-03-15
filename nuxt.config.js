@@ -1,3 +1,4 @@
+import { API_URL } from '@/config/constants'
 import en from './locale/en'
 
 export default {
@@ -74,7 +75,7 @@ export default {
   },
 
   axios: {
-    baseURL: process.env.API_URL,
+    baseURL: process.env.API_URL || API_URL,
   },
 
   i18n: {
